@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App using HTML CSS and JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+     <!-- About Button -->
+     <button id="aboutButton" class="about-button">About</button>
+
+
+    <div class="container">
+        <div class="search-box">
+            <i class='bx bxs-map'></i>
+            <input type="text" id="cityInput" placeholder="Enter your location">
+            <button class="bx bx-search" onclick="getWeather()"></button>
+            <!-- Voice command button -->
+            <button class="bx bx-microphone" onclick="startVoiceRecognition()"></button>
+        </div>
+
+        <p class="city-hide">City hide</p>
+
+        <div class="weather-box">
+            <div class="box">
+                <div class="info-weather">
+                    <div class="weather">
+                        <img src="images/cloud.png" alt="Weather Icon">
+                        <p class="temperature">0<span>°C</span></p>
+                        <p class="description">Broken Clouds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weather-details">
+            <div class="humidity">
+                <i class='bx bx-water'></i>
+                <div class="text">
+                    <div class="info-humidity">
+                        <span>0%</span>
+                    </div>
+                    <p>Humidity</p>
+                </div>
+            </div>
+
+            <div class="wind">
+                <i class='bx bx-wind'></i>
+                <div class="text">
+                    <div class="info-wind">
+                        <span>0 Km/h</span>
+                    </div>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="not-found">
+            <div class="box">
+                <img src="images/404.png" alt="Not Found">
+                <p>Oops! Location not found!</p>
+            </div>
+        </div>
+
+        <!-- About Modal -->
+        <div id="aboutModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeButton">&times;</span>
+                <h2>About Us</h2>
+                <div class="team-members">
+                    <div class="member">
+                        <img src="images/member1.jpg" alt="Member 1">
+                        <p><strong>Member 1:</strong> A very handsome boy.</p>
+                    </div>
+                    <div class="member">
+                        <img src="images/member2.jpg" alt="Member 2">
+                        <p><strong>Member 2:</strong> Another handsome boy.</p>
+                    </div>
+                    <!-- Add more members as needed -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+            .then(() => console.log("Service Worker registered!"))
+            .catch(error => console.error("Service Worker registration failed:", error));
+        }
+    </script>
+</body>
+</html>
